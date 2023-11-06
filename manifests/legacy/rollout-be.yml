@@ -32,7 +32,10 @@ spec:
         image: docker.io/kostiscodefresh/interest:latest
         env:
         - name: APP_VERSION
-          value: "1.0"
+          valueFrom:
+            configMapKeyRef:
+              name: my-backend-settings
+              key: APP_VERSION
         ports:
         - name: http
           containerPort: 8080
