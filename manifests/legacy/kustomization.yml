@@ -19,3 +19,8 @@ configMapGenerator:
   literals: 
   - APP_VERSION=1.0 # If updating the app version, update BACKEND_HOST at the same time
   - BACKEND_HOST="backend-active" # When previewing this should be set to `backend-preview` and afterwards reset to `backend-active`
+
+# Set PruneLast on ConfigMaps, important when using with Argo CD
+generatorOptions:
+  annotations:
+    argocd.argoproj.io/sync-options: PruneLast=true
